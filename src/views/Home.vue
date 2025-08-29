@@ -1,5 +1,11 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, useTemplateRef, watchEffect } from 'vue'
+
+const isDraging = ref(false)
+
+window.api.onDrag((e, isDrag) => {
+  isDraging.value = isDrag
+})
 </script>
 <template>
   <div class="ball-container">
@@ -20,6 +26,8 @@ import { ref } from 'vue'
     background: blue;
     border-radius: 5px;
     user-select: none;
+    cursor: pointer;
+    -webkit-app-region: drag;
   }
 }
 </style>

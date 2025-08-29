@@ -1,5 +1,5 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 
 contextBridge.exposeInMainWorld('api', {
-  ping: () => 'pong',
+  onDrag: (cb: any) => ipcRenderer.on('drag', cb),
 })
