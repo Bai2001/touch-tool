@@ -10,7 +10,7 @@ export default defineConfig((config) => {
       vue(),
       electron([
         {
-          entry: 'electron/main.ts', // 主进程入口
+          entry: 'electron-app/main.ts', // 主进程入口
           vite: {
             build: {
               outDir: 'dist-electron/',
@@ -18,14 +18,14 @@ export default defineConfig((config) => {
           },
         },
         {
-          entry: 'electron/preload.ts', // 预加载进程入口
+          entry: 'electron-app/preload.ts', // 预加载进程入口
           vite: {
             build: {
               outDir: 'dist-electron/',
               target: 'node16',
               minify: false,
               lib: {
-                entry: 'electron/preload.ts',
+                entry: 'electron-app/preload.ts',
                 formats: ['cjs'], // <--- 关键
               },
               rollupOptions: {

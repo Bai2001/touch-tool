@@ -1,18 +1,16 @@
 import { createRequire } from 'module'
-import { fileURLToPath } from 'url'
-import { join, dirname } from 'path'
+import { join } from 'path'
+import { app } from 'electron'
 
 const require = createRequire(import.meta.url)
-// 获取当前文件夹路径
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
 
-let nodeUrl
+let basePath
 if (import.meta.env.MODE === 'development') {
-  nodeUrl = join(__dirname, '..', 'native', 'build', 'Release', 'mouseHook.node')
+  basePath = app.getAppPath()
 } else {
-  nodeUrl = join(process.resourcesPath, 'native', 'build', 'Release', 'mouseHook.node')
+  basePath = process.resourcesPath
 }
+const nodeUrl = join(basePath, 'native', 'build', 'Release', 'mouseHook.node')
 
 const mouseHook = require(nodeUrl)
 

@@ -3,8 +3,6 @@ export {}
 
 declare global {
   interface Window {
-    api: {
-      onDrag: (cb: (event, isDrag: boolean) => void) => void
-    }
+    _app: {}
   }
 }

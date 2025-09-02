@@ -1,5 +1,5 @@
-appId: cn.baijinjie.touchTool
-productName: TouchTool
+appId: cn.baijinjie.tool
+productName: Tool
 directories:
   output: release
   buildResources: build

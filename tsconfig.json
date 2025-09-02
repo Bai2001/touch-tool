@@ -18,6 +18,6 @@
     "outDir": "dist-electron",
     "types": ["vite/client"]
   },
-  "include": ["src", "electron", "env.d.ts"],
+  "include": ["src", "electron-app", "env.d.ts"],
   "references": []
 }

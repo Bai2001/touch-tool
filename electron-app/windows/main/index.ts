@@ -3,23 +3,28 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import tray from './tray'
 import event from './event'
+import { getMainWindowPosition } from '../../utils/store/windowPosition'
 
 let win: Electron.BrowserWindow | null = null
 
-export const createBallWindow = () => {
+export const createMainWindow = () => {
   // 获取当前文件夹路径
   const __filename = fileURLToPath(import.meta.url)
   const __dirname = dirname(__filename)
 
-  const size = 60
+  const positionConfig = getMainWindowPosition()
 
   win = new BrowserWindow({
-    width: size,
-    height: size,
+    width: positionConfig.width,
+    height: positionConfig.height,
+    x: positionConfig.x,
+    y: positionConfig.y,
     frame: false,
     transparent: true, // 背景透明
     alwaysOnTop: true, // 浮窗在最前
-    resizable: false,
+    resizable: true,
+    maximizable: false,
+    fullscreenable: false,
     skipTaskbar: true, // 不显示在任务栏
     webPreferences: {
       preload: join(__dirname, 'preload.js'),

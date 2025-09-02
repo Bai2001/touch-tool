@@ -7,13 +7,6 @@ export default (win: Electron.BrowserWindow) => {
 
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: '拖动',
-      type: 'checkbox',
-      click: (item) => {
-        win.webContents.send('drag', item.checked)
-      },
-    },
-    {
       label: '退出',
       role: 'quit',
     },
